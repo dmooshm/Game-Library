@@ -1,3 +1,8 @@
+package Conquest;
+
+import processing.core.PApplet;
+import processing.core.PImage;
+
 public class Conquest extends PApplet {
 
     PImage gate;

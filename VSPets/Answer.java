@@ -1,3 +1,5 @@
+package VSPets;
+
 public class Answer {
     
     String label;
