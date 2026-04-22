@@ -7,10 +7,11 @@ import java.util.Collections;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Random;
+import Game.GameWriteable;
 
 import static java.util.Collections.fill;
 
-public class Game extends PApplet {
+public class Game extends PApplet implements GameWriteable {
 
     UI UI;
 
@@ -26,6 +27,30 @@ public class Game extends PApplet {
 
     public static void main(String[] args) {
         PApplet.main("Game");
+    }
+
+    @Override
+    public boolean isHighScore(String score, String currentHighScore) {
+        return false;
+    }
+
+    @Override
+    public String getGameName() {
+        return "Poker";
+    }
+
+    @Override
+    public void play() {
+
+        PApplet.runSketch(new String[] { "Your Game Name" }, this);
+
+//        Conquest Conquest = new Conquest();
+
+    }
+
+    @Override
+    public String getScore() {
+        return "";
     }
 
     public void setup() {
@@ -180,7 +205,7 @@ class UI {
         Hand playerHand = new Hand(new ArrayList<>(), new ArrayList<>());
         Game.characterList.add(new Player("You", playerHand, Game.startingBalance, parent));
 
-        loadData("src/names.csv");
+        loadData("names.csv");
         Random randomNumber = new Random();
 
         for (int i = 1; i < Game.numberOfPlayers; i++) {

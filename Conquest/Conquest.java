@@ -1,9 +1,10 @@
 package Conquest;
 
+import Game.GameWriteable;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-public class Conquest extends PApplet {
+public class Conquest extends PApplet implements GameWriteable {
 
     PImage gate;
 
@@ -60,9 +61,39 @@ public class Conquest extends PApplet {
     boolean keyTakenC3 = false;
     float countdown = 0;
 
-
-    void setup() {
+    public void settings() {
         size(1000, 700);
+    }
+
+
+    @Override
+    public boolean isHighScore(String score, String currentHighScore) {
+        return false;
+    }
+
+    @Override
+    public String getGameName() {
+        return "Conquest";
+    }
+
+    @Override
+    public void play() {
+
+        PApplet.runSketch(new String[] { "Your Game Name" }, this);
+
+//        Conquest Conquest = new Conquest();
+
+    }
+
+    @Override
+    public String getScore() {
+        return "";
+    }
+
+
+
+    public void setup() {
+//        size(1000, 700);
 
         //failure = false;      //tests
         //failure = true;
@@ -92,7 +123,7 @@ public class Conquest extends PApplet {
 
     }
 
-    void draw() {
+    public void draw() {
         if(screen == "start") {
             startScreen();
         } else if(screen == "ingame") {
@@ -130,7 +161,7 @@ public class Conquest extends PApplet {
     }
 
 
-    void mousePressed() {
+    public void mousePressed() {
         if(screen == "start") {
             if(!isMouseOverHelpButton() && !isMouseOverCloseButton()) {
                 screen = "ingame";
@@ -159,7 +190,7 @@ public class Conquest extends PApplet {
     }
 
 
-    void keyPressed() {
+    public void keyPressed() {
         if(screen == "start"){ //beginning keyPressed
             screen = "ingame";
             instructionsShown = false;
@@ -195,7 +226,7 @@ public class Conquest extends PApplet {
     }
 
 
-    void keyReleased() {
+    public void keyReleased() {
         if(keyCode == SHIFT){ //stop blocking
             blocking = false;
         }
@@ -495,7 +526,7 @@ public class Conquest extends PApplet {
             lvlrepetition = 0;
         }
         for(i = 0; i<lvlabundance; i++) {
-            float speed = random(0.03, 0.08);
+            float speed = random(0.03f, 0.08f);
             if(blocking == true) {
                 fill(0, 0, 255, 150);
             } else {

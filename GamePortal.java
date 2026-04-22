@@ -3,8 +3,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import Conquest.Conquest;
 import Game.Game;
-import Conquest.ConquestGame;
 import Game.ErrorCheck;
 
 public class GamePortal {
@@ -39,7 +39,8 @@ public class GamePortal {
 //        games.add(new NumberGuessGame());
 //        games.add(new StoreGame());
 //        games.add(new Quiz());
-        games.add(new ConquestGame());
+        games.add(new Conquest());
+        games.add(new Poker.Game());
     }
 
     public static void printGameChoices() {
